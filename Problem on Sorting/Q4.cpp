@@ -4,7 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool isSoted (int arr[], int n, int k){
+bool isSorted (int arr[], int n, int k){
     for (int i = k; i < n-1; i++){
         if(arr[i] > arr[i+1]) return false;
     }
@@ -22,7 +22,7 @@ int main()
         cin >> arr[i];
     }
     int i = 0, count = 0;
-    while(!isSoted(arr, n, i)){
+    while(!isSorted(arr, n, i)){
         count++;
         arr[i] = 0;
         i++;
