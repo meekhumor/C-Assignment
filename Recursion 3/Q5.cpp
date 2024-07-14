@@ -8,6 +8,9 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void powerSet(int ans[], int ori[], vector<<vector<int>> &v){
+
+}
 int main()
 {
     system("cls");
@@ -20,6 +23,9 @@ int main()
         cin >> arr[i];
     }
 
+    vector<vector<int> v;
+    int ans[1];
+    powerSet(ans, arr, v);
     
     return 0;
 }
