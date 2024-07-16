@@ -1,0 +1,1 @@
+// Ques: Next Greater Node in Linked List [Leetcode - 1019]

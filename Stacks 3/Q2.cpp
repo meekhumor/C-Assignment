@@ -1,0 +1,1 @@
+// Ques: Remove nodes from a linked list. [Leetcode 2487]
