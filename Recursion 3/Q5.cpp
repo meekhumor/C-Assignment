@@ -1,31 +1,23 @@
-// Given an integer array nums that may contain duplicates, return all possible subsets
-// (the power set)
-// The solution set must not contain duplicate subsets. Return the solution in any orderD
-// Example 0:
-// Input: nums = [0,2,2]
-// Output: [[],[0],[0,2],[0,2,2],[2],[2,2]]
+// Ques: Leetcode [90]
 
-#include <bits/stdc++.h>
-using namespace std;
+class Solution {
+public:
 
-void powerSet(int ans[], int ori[], vector<<vector<int>> &v){
-
-}
-int main()
-{
-    system("cls");
-     int n, k;
-    cout << "Enter the size of an array: ";
-    cin >> n;
-    int arr[n];
-    cout << "Enter the elements of an array: ";
-    for (int i = 0; i < n; i++){
-        cin >> arr[i];
+    void helper(vector<int>& nums, vector<vector<int>>& ans, vector<int>& temp, int idx) {
+        ans.push_back(temp);
+        for(int i = idx; i < nums.size(); i++) {
+            if(i != idx && nums[i] ==nums[i-1]) continue;
+            temp.push_back(nums[i]);
+            helper(nums, ans, temp, i+1);
+            temp.pop_back();
+        }
     }
 
-    vector<vector<int> v;
-    int ans[1];
-    powerSet(ans, arr, v);
-    
-    return 0;
-}
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+        vector<vector<int>> ans;
+        vector<int> temp;
+        sort(nums.begin(), nums.end());
+        helper(nums, ans, temp, 0);
+        return ans;
+    }
+};
