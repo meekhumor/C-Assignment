@@ -3,32 +3,32 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<int> st;
-        for(int i=0; i<s.size(); i++){
-            if(s[i] == '(' || s[i] == '{' || s[i] == '['){
-                st.push(s[i]);
+        stack<char> st;
+        stack<char> helper;
+        
+        for(int i = s.size()-1; i >= 0; i--){
+            st.push(s[i]);
+        }
+
+        while(!st.empty()){
+            if(st.top() == '(' || st.top() == '{' || st.top() == '['){
+                helper.push(st.top());
+                st.pop();
             }
             else{
-                switch(s[i]){
-                    case ')': 
-                        if(st.size() == 0) return false;
-                        if(st.top() == '(') st.pop();
-                        else return false;
-                        break;
-                    case '}': 
-                        if(st.size() == 0) return false;
-                        if(st.top() == '{') st.pop();
-                        else return false;
-                        break;
-                    case ']': 
-                        if(st.size() == 0) return false;
-                        if(st.top() == '[') st.pop();
-                        else return false;
-                        break;
+                if(!helper.empty()){
+                    if((st.top() == ')' && helper.top() == '(') || (st.top() == '}' && helper.top() == '{') || (st.top() == ']' && helper.top() == '[')){
+                        st.pop();
+                        helper.pop();
+                    } 
+                    else return false;
                 }
+                else return false;
             }
         }
-        if(st.size()==0) return true;
-        return false;
+        if(helper.empty()) return true;
+        else return false;
+        
+        
     }
 };
